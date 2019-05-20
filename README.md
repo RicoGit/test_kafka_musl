@@ -1,3 +1,9 @@
+# Solution
+```
+# apt update && apt -yq install curl musl-dev musl-tools make python g++
+$ rustup target add x86_64-unknown-linux-musl
+$ CC=musl-gcc CXX=g++ cargo build --target=x86_64-unknown-linux-musl
+```
 check https://github.com/fede1024/rust-rdkafka/issues/88
 
 ```bash
