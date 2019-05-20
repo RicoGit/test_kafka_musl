@@ -5,4 +5,4 @@ authors = ["loomaclin <loo.maclin@protonmail.com>"]
 edition = "2018"
 
 [dependencies]
-rdkafka = "=0.20.0"
+rdkafka = "=0.21.0"
