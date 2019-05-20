@@ -1,3 +1,12 @@
+# Solution
+```
+# apt update && apt -yq install curl musl-dev musl-tools make python g++
+$ rustup target add x86_64-unknown-linux-musl
+$ CC=musl-gcc CXX=g++ cargo build --target=x86_64-unknown-linux-musl
+```
+check https://github.com/fede1024/rust-rdkafka/issues/88
+
+```bash
 loomaclin@loomaclin:~/IdeaProjects/test_kafka_musl$ cargo build --target=x86_64-unknown-linux-musl
    Compiling test_kafka_musl v0.1.0 (/home/loomaclin/IdeaProjects/test_kafka_musl)
 error: linking with `cc` failed: exit code: 1
@@ -302,3 +311,4 @@ error: aborting due to previous error
 error: Could not compile `test_kafka_musl`.
 
 To learn more, run the command again with --verbose.
+```
