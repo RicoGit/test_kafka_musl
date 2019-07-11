@@ -4,6 +4,12 @@
 $ rustup target add x86_64-unknown-linux-musl
 $ CC=musl-gcc CXX=g++ cargo build --target=x86_64-unknown-linux-musl
 ```
+
+## Solution
+```
+PATH=/musl/bin:$PATH PKG_CONFIG_ALLOW_CROSS=true PKG_CONFIG_ALL_STATIC=true PKG_CONFIG_PATH=/musl/lib/pkgconfig LIBZ_SYS_STATIC=1 CC=musl-gcc CXX=g++ cargo build -p ticket-storage --release --target x86_64-unknown-linux-musl
+```
+
 check https://github.com/fede1024/rust-rdkafka/issues/88
 
 ```bash
