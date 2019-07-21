@@ -7,4 +7,4 @@ Cargo.lock
 .idea/
 
 target_distrib/
-
+/target_distrib2
