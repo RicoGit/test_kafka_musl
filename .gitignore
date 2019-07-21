@@ -1,2 +1,4 @@
 /target
+/target_distrib
+/target_distrib2
 **/*.rs.bk

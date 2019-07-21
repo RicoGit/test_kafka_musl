@@ -1,5 +1,5 @@
 
-builder-image: ekidd/Dockerfile
+builder-image:
 	docker build -f ekidd/Dockerfile -t builder1 .
 
 # Build with ekidd/rust-musl-builder
@@ -19,13 +19,16 @@ build1: builder-image
 
 
 ## Build with clux/muslrust
-#build2: builder-image
-#
-#	docker run --rm \
-#		-v $$PWD:/volume \
-#		-v $$PWD/target_distrib2/.cargo-git:/root/.cargo/git \
-#		-v $$PWD/target_distrib2/.cargo-registry:/root/.cargo/registry \
-#		-v $$(pwd)/target_distrib2/.rustup:/home/rust/.rustup \
-#		-v $$(pwd)/target_distrib/target:/home/rust/src/target \
-#		-w /volume \
-#		-t clux/muslrust cargo build --release
+build2: builder-image2
+
+	docker run --rm \
+		-v $$PWD:/volume \
+		-v $$PWD/target_distrib2/.cargo-git:/root/.cargo/git \
+		-v $$PWD/target_distrib2/.cargo-registry:/root/.cargo/registry \
+		-v $$(pwd)/target_distrib2/.rustup:/root/.rustup \
+		-v $$(pwd)/target_distrib2/target:/volume/target \
+		-w /volume \
+		builder2 /bin/bash -c "rustup target add x86_64-unknown-linux-musl && cargo build --release"
+
+builder-image2:
+	docker build -f clux/Dockerfile -t builder2 .
