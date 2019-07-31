@@ -1,4 +1,6 @@
-FROM clux/muslrust:nightly AS builder
+FROM clux/muslrust:nightly
 
-RUN apt-get update && apt-get install -y libclang-3.9 clang-3.9 llvm-3.9 \
-    curl musl-dev musl-tools make python
+COPY ./target_distrib2/target/x86_64-unknown-linux-musl/release/test_kafka_musl /app
+
+ENTRYPOINT ["/app"]
+

@@ -28,7 +28,10 @@ build2: builder-image2
 		-v $$(pwd)/target_distrib2/.rustup:/root/.rustup \
 		-v $$(pwd)/target_distrib2/target:/volume/target \
 		-w /volume \
-		builder2 /bin/bash -c "rustup target add x86_64-unknown-linux-musl && cargo build --release"
+		builder2 /bin/bash -c "rustup target add x86_64-unknown-linux-musl && cargo build --release -vv"
+
+docker2: build2
+	docker build --no-cache -t musl -f clux/Dockerfile .
 
 builder-image2:
-	docker build -f clux/Dockerfile -t builder2 .
+	docker build -f clux/Builder_dockerfile -t builder2 .
