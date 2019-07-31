@@ -1,10 +1,12 @@
 /target/
-
-Cargo.lock
-
+.idea
 **/*.rs.bk
 
-.idea/
+Cargo.lock
+README.md
+Makefile
+.gitignore
+
 
 clux/
 rust/

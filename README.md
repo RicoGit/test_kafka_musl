@@ -4,12 +4,12 @@ This application use rdkafka and zstd compressing library.
 
 # Build rust with ekidd/rust-musl-builder docker image
 
-// todo
+// works without zstd
 
 
 # Build rust with clux/muslrust docker image
 
-// todo 
+// works without zstd 
 
 # Build rust with official docker image  rust/rust
 
