@@ -1,0 +1,12 @@
+# Rust compiler image
+FROM rust:latest
+
+RUN apt-get update && \
+    apt-get install -y cmake libclang-3.9 clang-3.9 llvm-3.9
+
+# buid and install zstd
+RUN wget https://github.com/facebook/zstd/releases/download/v1.4.2/zstd-1.4.2.tar.gz && \
+    tar xzf zstd-1.4.2.tar.gz
+
+RUN cd zstd-1.4.2/build/cmake && mkdir build && cd build && \
+    cmake .. && make -j 12 && make install

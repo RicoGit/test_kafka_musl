@@ -1,4 +1,6 @@
 /target
 /target_distrib
 /target_distrib2
+/target_distrib3
 **/*.rs.bk
+Cargo.lock

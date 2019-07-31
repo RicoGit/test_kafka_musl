@@ -6,8 +6,15 @@ Cargo.lock
 
 .idea/
 
+clux/
+rust/
+ekidd/
+
 target_distrib/
 !target_distrib/target/x86_64-unknown-linux-musl/
 
 /target_distrib2
 !target_distrib2/target/x86_64-unknown-linux-musl/
+
+/target_distrib3
+!target_distrib3/target/release

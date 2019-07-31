@@ -3,6 +3,8 @@ name = "test_kafka_musl"
 version = "0.1.0"
 authors = ["loomaclin <loo.maclin@protonmail.com>"]
 edition = "2018"
+build = "build.rs"
 
 [dependencies]
+
 rdkafka = "=0.21.0"
