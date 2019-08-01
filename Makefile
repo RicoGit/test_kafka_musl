@@ -25,7 +25,7 @@ build2: builder-image2
 		-v $$(pwd)/target_distrib2/.rustup:/root/.rustup \
 		-v $$(pwd)/target_distrib2/target:/volume/target \
 		-w /volume \
-		builder2 /bin/bash -c "CC=musl-gcc CXX=g++ && rustup target add x86_64-unknown-linux-musl && cargo build --release -vv"
+		builder2 /bin/bash -c "CC=musl-gcc CXX=g++ && rustup target add x86_64-unknown-linux-musl && cargo build --target x86_64-unknown-linux-musl --release -vv"
 
 # Build with official Rust image
 build3: builder-image3

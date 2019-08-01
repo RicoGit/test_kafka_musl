@@ -1,4 +1,22 @@
 FROM clux/muslrust:nightly AS builder
 
 RUN apt-get update && apt-get install -y libclang-3.9 clang-3.9 llvm-3.9 \
-    curl musl-dev musl-tools make python libzstd1-dev zstd
+    curl musl-dev musl-tools make python wget cmake
+
+RUN CC=musl-gcc CXX=g++
+
+# buid and install zstd
+RUN wget https://github.com/facebook/zstd/releases/download/v1.4.2/zstd-1.4.2.tar.gz && \
+    tar xzf zstd-1.4.2.tar.gz
+
+RUN cd zstd-1.4.2/build/cmake && mkdir build && cd build && \
+    cmake .. && make -j 12 && make install
+
+RUN ln -s /usr/local/lib/libzstd.a /usr/lib/x86_64-linux-musl/libzstd.a && \
+    ln -s /usr/local/lib/libzstd.a /musl/lib/libzstd.a && \
+    ln -s /usr/local/lib/libzstd.so /usr/lib/x86_64-linux-musl/libzstd.so && \
+    ln -s /usr/local/lib/libzstd.so /musl/lib/libzstd.so && \
+    ln -s /usr/local/include/zstd.h /usr/include/x86_64-linux-musl/zstd.h && \
+    ln -s /usr/local/include/zstd.h /musl/include/zstd.h && \
+    ln -s /usr/local/include/zstd_errors.h /usr/include/x86_64-linux-musl/zstd_errors.h && \
+    ln -s /usr/local/include/zstd_errors.h /musl/include/zstd_errors.h

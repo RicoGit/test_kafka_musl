@@ -9,7 +9,9 @@ This application use rdkafka and zstd compressing library.
 
 # Build rust with clux/muslrust docker image
 
-// works without zstd 
+building: `make docker2` - builds docker image with our application
+
+running: `docker run musl:latest`  - run docker image 
 
 # Build rust with official docker image  rust/rust
 
